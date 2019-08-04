@@ -85,6 +85,7 @@ public class MenuWindow extends Application {
         Stage createStage = new Stage();
         CreateWordWindow createWordWindow = new CreateWordWindow();
         createWordWindow.start(createStage);
+        primaryStage.hide();
     }
 
     private void launchAboutWindow(){

@@ -79,10 +79,12 @@ public class DefinitionDisplayWindow extends Application {
             Button add = new Button("ADD");
             okbutton.setFont((new FontFetcher()).getFont("h0.7"));
             add.setOnAction(e ->  addDefinition(definitionName, definition));
-
+            Button backToCreateWordWindow= new Button("back to searching");
+            backToCreateWordWindow.setFont((new FontFetcher()).getFont("h0.5"));
+            backToCreateWordWindow.setOnAction(e->goBackToSearching(stage));
             HBox bottomButton = new HBox();
             bottomButton.setSpacing(5);
-            bottomButton.getChildren().addAll(okbutton, add);
+            bottomButton.getChildren().addAll(okbutton, add,backToCreateWordWindow);
 
 
             definitionBox.getChildren().addAll(imageView,definitionNameText,definitionText, bottomButton);
@@ -116,6 +118,14 @@ public class DefinitionDisplayWindow extends Application {
         stage.setTitle(definitionName);
         stage.show();
 
+    }
+
+    private void goBackToSearching(Stage stage) {
+        Stage oldstage=stage;
+        Stage newStage = new Stage();
+        CreateWordWindow lookup=new CreateWordWindow();
+        lookup.start(newStage);
+       oldstage.close();
     }
 
     private void addDefinition(String definitionName,String definition){

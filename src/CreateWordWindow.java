@@ -31,12 +31,23 @@ public class CreateWordWindow extends Application {
         Button submitWord = new Button("Get Word");
         submitWord.setOnAction(e -> fetchDefinition(word.getText()));
 
-        mainBox.getChildren().addAll(mainText,word, submitWord);
+        Button backToMainMenu= new Button("Back");
+        backToMainMenu.setOnAction(e-> returnToMainMenu());
+
+        mainBox.getChildren().addAll(mainText,word, submitWord,backToMainMenu);
 
         mainScene = new Scene(mainBox);
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Kelly's Word Bank");
         primaryStage.show();
+    }
+
+    private void returnToMainMenu() {
+        Stage newStage = new Stage();
+        MenuWindow menuWindow = new MenuWindow();
+        menuWindow.start(newStage);
+        primaryStage.close();
+
     }
 
     private void fetchDefinition(String word){
